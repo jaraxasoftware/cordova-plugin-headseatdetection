@@ -42,6 +42,7 @@ public class HeadsetDetection extends CordovaPlugin {
       IntentFilter intentFilter = new IntentFilter();
       intentFilter.addAction(Intent.ACTION_HEADSET_PLUG);
       intentFilter.addAction(BluetoothHeadset.ACTION_CONNECTION_STATE_CHANGED);
+      intentFilter.addAction(AudioManager.ACTION_AUDIO_BECOMING_NOISY);
       this.receiver = new BroadcastReceiver() {
           @Override
           public void onReceive(Context context, Intent intent) {
@@ -95,10 +96,13 @@ public class HeadsetDetection extends CordovaPlugin {
   private int getConnectionStatus(String action, Intent intent) {
       int state = DEFAULT_STATE;
       int normalizedState = DEFAULT_STATE;
+
       if (action.equals(Intent.ACTION_HEADSET_PLUG)) {
         state = intent.getIntExtra("state", DEFAULT_STATE);
       } else if (action.equals(BluetoothHeadset.ACTION_CONNECTION_STATE_CHANGED)) {
         state = intent.getIntExtra(BluetoothHeadset.EXTRA_STATE, DEFAULT_STATE);
+      } else if (action.equals(AudioManager.ACTION_AUDIO_BECOMING_NOISY)) {
+          state = DISCONNECTED;
       }
 
       if ((state == 1 && action.equals(Intent.ACTION_HEADSET_PLUG)) || (state == 2 && action.equals(BluetoothHeadset.ACTION_CONNECTION_STATE_CHANGED))) {
