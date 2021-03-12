@@ -6,6 +6,7 @@ import org.apache.cordova.PluginResult;
 import org.apache.cordova.CordovaInterface;
 import org.apache.cordova.CordovaWebView;
 
+import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothHeadset;
 import android.content.Context;
 import android.media.AudioManager;
@@ -42,6 +43,7 @@ public class HeadsetDetection extends CordovaPlugin {
       IntentFilter intentFilter = new IntentFilter();
       intentFilter.addAction(Intent.ACTION_HEADSET_PLUG);
       intentFilter.addAction(BluetoothHeadset.ACTION_CONNECTION_STATE_CHANGED);
+      intentFilter.addAction(BluetoothAdapter.ACTION_CONNECTION_STATE_CHANGED);
       intentFilter.addAction(AudioManager.ACTION_AUDIO_BECOMING_NOISY);
       this.receiver = new BroadcastReceiver() {
           @Override
@@ -100,7 +102,9 @@ public class HeadsetDetection extends CordovaPlugin {
       if (action.equals(Intent.ACTION_HEADSET_PLUG)) {
         state = intent.getIntExtra("state", DEFAULT_STATE);
       } else if (action.equals(BluetoothHeadset.ACTION_CONNECTION_STATE_CHANGED)) {
-        state = intent.getIntExtra(BluetoothHeadset.EXTRA_STATE, DEFAULT_STATE);
+          state = intent.getIntExtra(BluetoothHeadset.EXTRA_STATE, DEFAULT_STATE);
+      } else if (action.equals(BluetoothAdapter.ACTION_CONNECTION_STATE_CHANGED)) {
+          state = intent.getIntExtra(BluetoothAdapter.EXTRA_STATE, DEFAULT_STATE);
       } else if (action.equals(AudioManager.ACTION_AUDIO_BECOMING_NOISY)) {
           state = DISCONNECTED;
       }
