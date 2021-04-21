@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-headsetdetection",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "description": "Detect a wired or Bluetooth headset",
   "cordova": {
     "id": "cordova-plugin-headsetdetection",
@@ -32,10 +32,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/RamseyInHouse/HeadsetDetection-PhoneGap-Plugin"
+    "url": "https://github.com/jaraxasoftware/cordova-plugin-headseatdetection"
   },
   "bugs": {
-    "url": "https://github.com/RamseyInHouse/HeadsetDetection-PhoneGap-Plugin/issues"
+    "url": "https://github.com/jaraxasoftware/cordova-plugin-headseatdetection/issues"
   },
-  "homepage": "https://github.com/RamseyInHouse/HeadsetDetection-PhoneGap-Plugin#readme"
+  "homepage": "https://github.com/jaraxasoftware/cordova-plugin-headseatdetection#readme"
 }
