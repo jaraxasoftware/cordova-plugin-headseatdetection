@@ -52,6 +52,8 @@ This plugin was created by and enhanced for Plugman / PhoneGap Build by [Eddy Ve
 
 The awesome `registerRemoteEvents` function was added by [Gerhard Sletten](https://github.com/gerhardsletten).
 
+Android Bluetooth support added by [Kuack Media Group](https://github.com/kuackmedia)
+
 ## 5. License
 
 [The MIT License (MIT)](http://www.opensource.org/licenses/mit-license.html)
